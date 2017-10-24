@@ -1,0 +1,77 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #75DBCD;
+  height: 80px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.Post {
+  background-color: #75DBCD;
+  border: medium solid #75DBCD;
+  margin: 20px 40px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.Post-link {
+  text-decoration: 'none';
+  color: inherit;
+}
+.Post:hover {
+  background-color: white;
+  border: medium solid #75DBCD;
+  color: #75DBCD;
+}
+.Post-title {
+  font-size: large;
+  padding: 10px 0;
+  margin: 0;
+}
+.Post-info {
+  font-size: medium;
+  padding: 0;
+  margin: 0;
+}
+.Post-body {
+  font-size: medium;
+  padding: 20px 0;
+  margin: 0;
+}
+.Post-score {
+  font-size: medium;
+  padding: 0;
+  margin: 0;
+}
+.Post-comments {
+  font-size: medium;
+  padding: 5px 0;
+  margin: 0;
+}
+.Nav-bar {
+  padding: 20px 80px;
+}
+ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 0;
+  list-style: none;
+}
+li {
+  color: #75DBCD;
+  padding: 10px 20px;
+  border: medium solid #75DBCD;
+}
+li:hover {
+  background-color: #75DBCD;
+  color: white;
+}
