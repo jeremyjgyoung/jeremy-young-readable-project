@@ -9,10 +9,10 @@ class HeaderNavBar extends Component {
         </header>
         <nav className="Nav-bar">
           <ul>
-            <li>One</li>
-            <li>Two</li>
-            <li>Three</li>
-            <li>Four</li>
+            <li>All</li>
+            <li>Business</li>
+            <li>Education</li>
+            <li>Photography</li>
           </ul>
         </nav>
       </div>
