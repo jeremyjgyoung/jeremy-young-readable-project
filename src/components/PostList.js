@@ -7,7 +7,7 @@ class PostList extends Component {
     return (
       <div className="PostList">
         {this.props.posts.map((post) =>(
-        <div className="Post">
+        <div className="Post" key={post.id}>
           <h1 className="Post-title">{post.title}</h1>
           <p className="Post-body">{post.body}</p>
           <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
