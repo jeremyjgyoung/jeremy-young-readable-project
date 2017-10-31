@@ -1,26 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Route } from 'react-router-dom'
 import HeaderNavBar from './components/HeaderNavBar'
 import PostList from './components/PostList'
+import PostForm from './components/PostForm'
 import PostDetail from './components/PostDetail'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route exact path='/' render={() => (
           <div>
             <HeaderNavBar />
+            <PostForm />
             <PostList />
           </div>
-        )}/>
-        <Route path='/post-detail' render={() => (
-          <div>
-            <HeaderNavBar />
-            <PostDetail />
-          </div>
-        )}/>
       </div>
     );
   }
