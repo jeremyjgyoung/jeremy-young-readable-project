@@ -9,10 +9,9 @@ class HeaderNavBar extends Component {
         </header>
         <nav className="Nav-bar">
           <ul>
-            <li>All</li>
-            <li>Business</li>
-            <li>Education</li>
-            <li>Photography</li>
+            {this.props.categories.map((category) =>
+              <li key={category.name}>{category.name}</li>
+            )}
           </ul>
         </nav>
       </div>

@@ -1,21 +1,37 @@
 import React, { Component } from 'react';
 import './App.css';
 import HeaderNavBar from './components/HeaderNavBar'
-import PostList from './components/PostList'
 import PostForm from './components/PostForm'
-import PostDetail from './components/PostDetail'
+import PostList from './components/PostList'
+
+const categories = [
+  {
+    name: 'react',
+    path: 'react'
+  },
+  {
+    name: 'redux',
+    path: 'redux'
+  },
+  {
+    name: 'udacity',
+    path: 'udacity'
+  }
+]
 
 class App extends Component {
   render() {
     return (
       <div className="App">
           <div>
-            <HeaderNavBar />
+            <HeaderNavBar
+              categories={categories}
+            />
             <PostForm />
             <PostList />
           </div>
       </div>
-    );
+    )
   }
 }
 
