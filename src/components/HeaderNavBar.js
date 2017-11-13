@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
 
 class HeaderNavBar extends Component {
   render() {
@@ -10,7 +12,7 @@ class HeaderNavBar extends Component {
         <nav className="Nav-bar">
           <ul>
             {this.props.categories.map((category) =>
-              <li key={category.name}>{category.name}</li>
+              <Link className="Category-links" to={`/${category.path}`}><li key={category.name}>{category.name}</li></Link>
             )}
           </ul>
         </nav>

@@ -6,7 +6,7 @@ class PostList extends Component {
   render() {
     return (
       <div className="PostList">
-        {this.props.posts.filter( post => post.category==="react").map((post) =>(
+        {this.props.posts.filter(post => post.category===this.props.category).map((post) =>(
         <div className="Post" key={post.id}>
           <h1 className="Post-title">{post.title}</h1>
           <p className="Post-body">{post.body}</p>

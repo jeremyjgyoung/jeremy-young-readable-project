@@ -79,6 +79,9 @@
 .Nav-bar {
   padding: 20px 80px;
 }
+.Category-links {
+  text-decoration: none;
+}
 ul {
   display: flex;
   flex-direction: row;
