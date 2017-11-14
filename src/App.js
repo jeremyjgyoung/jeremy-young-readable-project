@@ -4,6 +4,7 @@ import './App.css';
 import HeaderNavBar from './components/HeaderNavBar'
 import PostForm from './components/PostForm'
 import PostList from './components/PostList'
+import PostDetail from './components/PostDetail'
 
 const categories = [
   {
@@ -33,7 +34,7 @@ class App extends Component {
             <PostList />
           </div>
         )}/>
-        <Route path='/:category' render={({ match }) => (
+        <Route exact path='/:category' render={({ match }) => (
           <div>
             <HeaderNavBar
               categories={categories}
@@ -41,6 +42,18 @@ class App extends Component {
             <PostForm />
             <PostList
               category={match.params.category}
+            />
+          </div>
+        )}/>
+        <Route path='/:category/:post_id' render={({ match }) => (
+          <div>
+            <HeaderNavBar
+              categories={categories}
+            />
+            <PostForm />
+            <PostDetail
+              category={match.params.category}
+              post_id={match.params.post_id}
             />
           </div>
         )}/>
