@@ -7,7 +7,6 @@ class PostList extends Component {
   render() {
     return (
       <div className="PostList">
-        {console.log(this.props)}
         {this.props.posts.filter(post => post.category===this.props.category).map((post) =>(
         <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
           <div className="Post" key={post.id}>

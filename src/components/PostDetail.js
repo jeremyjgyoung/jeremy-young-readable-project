@@ -8,7 +8,7 @@ class PostList extends Component {
     return (
       <div className="PostList">
         {console.log(this.props)}
-        {this.props.posts.filter(post => post.category===this.props.category).map((post) =>(
+        {this.props.posts.filter(post => post.id===this.props.post_id).map((post) =>(
         <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
           <div className="Post" key={post.id}>
             <h1 className="Post-title">{post.title}</h1>
