@@ -33,36 +33,14 @@ class App extends Component {
             <PostList />
           </div>
         )}/>
-        <Route path='/redux' render={() => (
+        <Route path='/:category' render={({ match }) => (
           <div>
             <HeaderNavBar
               categories={categories}
             />
             <PostForm />
             <PostList
-              category='redux'
-            />
-          </div>
-        )}/>
-        <Route path='/react' render={() => (
-          <div>
-            <HeaderNavBar
-              categories={categories}
-            />
-            <PostForm />
-            <PostList
-              category='react'
-            />
-          </div>
-        )}/>
-        <Route path='/udacity' render={() => (
-          <div>
-            <HeaderNavBar
-              categories={categories}
-            />
-            <PostForm />
-            <PostList
-              category='udacity'
+              category={match.params.category}
             />
           </div>
         )}/>
