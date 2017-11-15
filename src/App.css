@@ -40,6 +40,11 @@
   padding: 10px 0;
   margin: 0;
 }
+.Post-author {
+  font-size: medium;
+  padding: 8px 0;
+  margin: 0;
+}
 .Post-info {
   font-size: medium;
   padding: 0;

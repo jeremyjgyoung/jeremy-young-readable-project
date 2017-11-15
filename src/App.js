@@ -8,6 +8,10 @@ import PostDetail from './components/PostDetail'
 
 const categories = [
   {
+    name: 'all',
+    path: 'all'
+  },
+  {
     name: 'react',
     path: 'react'
   },
