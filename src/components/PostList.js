@@ -5,10 +5,9 @@ import {connect} from 'react-redux'
 
 class PostList extends Component {
   render() {
-    {console.log(this.props.comments)}
     return (
       <div className="PostList">
-        {this.props.posts.filter(post => post.category===this.props.category).map((post) =>(
+        {Object.values(this.props.posts).filter(post => post.category===this.props.category).map((post) =>(
         <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
           <div className="Post" key={post.id}>
             <h1 className="Post-title">{post.title}</h1>
