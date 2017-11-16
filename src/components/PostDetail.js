@@ -8,7 +8,7 @@ class PostList extends Component {
     return (
       <div>
       <div className="PostList">
-        {Object.values(this.props.posts).filter(post => post.id===this.props.post_id).map((post) =>(
+        {this.props.posts.filter(post => post.id===this.props.post_id).map((post) =>(
         <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
           <div className="Post" key={post.id}>
             <h1 className="Post-title">{post.title}</h1>
@@ -21,9 +21,7 @@ class PostList extends Component {
         ))}
       </div>
       <div className="PostList">
-        {console.log(Object.values(this.props.comments))}
-        {console.log(this.props.posts)}
-        {Object.values(this.props.comments).filter(comment => comment.parentId===this.props.post_id).map((comment) =>(
+        {this.props.comments.filter(comment => comment.parentId===this.props.post_id).map((comment) =>(
           <div className="Post" key={comment.id}>
             <h1 className="Post-author">{comment.author}</h1>
             <p className="Post-body">{comment.body}</p>
@@ -38,8 +36,8 @@ class PostList extends Component {
 
 function mapStateToProps(state) {
   return {
-    posts: state.posts,
-    comments: state.comments
+    posts: Object.values(state.posts),
+    comments: Object.values(state.comments)
   }
 }
 
