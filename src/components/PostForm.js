@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 
+// Be able to post
 class PostForm extends Component {
   render() {
     return (

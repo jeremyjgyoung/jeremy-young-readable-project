@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
-
+// Create a way to create an active link
 class HeaderNavBar extends Component {
   render() {
     return (

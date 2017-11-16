@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
 
+// Add voting
 class PostList extends Component {
   render() {
     {console.log(this.props.category)}
