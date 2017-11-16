@@ -15,6 +15,8 @@ class PostList extends Component {
             <h1 className="Post-title">{post.title}</h1>
             <h2 className="Post-author">{post.author}</h2>
             <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
+            <button onClick={() => post.dispatch({ type: 'INCREMENT_VOTE' })}>+</button>
+            <button onClick={() => post.dispatch({ type: 'DECREMENT_VOTE' })}>-</button>
             <p className="Post-comments"><b>Comments:</b> {post.commentCount}</p>
           </div>
         </Link>

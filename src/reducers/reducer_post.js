@@ -1,4 +1,4 @@
-import { ADD_POST, EDIT_POST, DELETE_POST } from '../actions'
+import { ADD_POST, EDIT_POST, DELETE_POST, INCREMENT_VOTE, DECREMENT_VOTE } from '../actions'
 
 // To Do: Make logic make sense
 export default function (state = initialPostState, action) {
@@ -18,6 +18,16 @@ export default function (state = initialPostState, action) {
         // ...state,
         // [action]: ...,
       }
+    case INCREMENT_VOTE:
+      return {
+        ...state
+        // state.voteScore + 1
+      }
+    case DECREMENT_VOTE:
+    return {
+      ...state
+      // state.voteScore - 1
+    }
     default :
       return state
   }
