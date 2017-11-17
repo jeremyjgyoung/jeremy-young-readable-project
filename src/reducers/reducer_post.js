@@ -2,6 +2,7 @@ import { ADD_POST, EDIT_POST, DELETE_POST, INCREMENT_VOTE, DECREMENT_VOTE } from
 
 // To Do: Make logic make sense
 export default function (state = initialPostState, action) {
+  console.log(action.type)
   switch (action.type) {
     case ADD_POST :
       return {
