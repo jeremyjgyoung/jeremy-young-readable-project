@@ -51,16 +51,16 @@ export function deleteComment ({ id, parentId, timestamp, body, author, voteScor
   }
 }
 
-export function decrementVote ({ id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted }) {
+export function decrementVote ({ id, voteScore }) {
   return {
     type: DECREMENT_VOTE,
-    id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted
+    id, voteScore
   }
 }
 
-export function incrementVote ({ id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted }) {
+export function incrementVote ({ id, voteScore }) {
   return {
     type: INCREMENT_VOTE,
-    id, parentId, timestamp, body, author, voteScore, deleted, parentDeleted
+    id, voteScore
   }
 }

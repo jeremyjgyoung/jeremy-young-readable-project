@@ -2,7 +2,8 @@ import { ADD_POST, EDIT_POST, DELETE_POST, INCREMENT_VOTE, DECREMENT_VOTE } from
 
 // To Do: Make logic make sense
 export default function (state = initialPostState, action) {
-  console.log(action.type)
+  const { id, voteScore } = action
+
   switch (action.type) {
     case ADD_POST :
       return {
@@ -22,11 +23,10 @@ export default function (state = initialPostState, action) {
     case INCREMENT_VOTE:
       return {
         ...state
-        // state.voteScore + 1
       }
     case DECREMENT_VOTE:
     return {
-      ...state
+      ...state,
       // state.voteScore - 1
     }
     default :
