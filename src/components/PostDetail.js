@@ -8,7 +8,7 @@ class PostList extends Component {
     return (
       <div>
       <div className="PostList">
-        {this.props.posts.filter(post => (post.id===this.props.post_id && post.deleted===false)).map((post) =>(
+        {Object.values(this.props.posts).filter(post => (post.id===this.props.post_id && post.deleted===false)).map((post) =>(
         <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
           <div className="Post" key={post.id}>
             <button onClick={() => this.props.deletePost({id:post.id, voteScore:post.deleted})}>x</button>
@@ -24,11 +24,13 @@ class PostList extends Component {
         ))}
       </div>
       <div className="PostList">
-        {this.props.comments.filter(comment => comment.parentId===this.props.post_id).map((comment) =>(
+        {this.props.comments.filter(comment => (comment.parentId===this.props.post_id && this.props.posts[comment.parentId].deleted===false)).map((comment) =>(
           <div className="Post" key={comment.id}>
             <h1 className="Post-author">{comment.author}</h1>
             <p className="Post-body">{comment.body}</p>
             <p className="Post-score"><b>Score:</b> {comment.voteScore}</p>
+            {/* <button onClick={() => this.props.incrementVote({comment.id, voteScore:comment.voteScore})}>+</button>
+            <button onClick={() => this.props.decrementVote({id:comment.id, voteScore:comment.voteScore})}>-</button> */}
           </div>
         ))}
       </div>
@@ -39,7 +41,7 @@ class PostList extends Component {
 
 function mapStateToProps(state) {
   return {
-    posts: Object.values(state.posts),
+    posts: state.posts,
     comments: Object.values(state.comments)
   }
 }
