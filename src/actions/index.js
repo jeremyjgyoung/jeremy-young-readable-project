@@ -6,6 +6,8 @@ export const EDIT_COMMENT = 'EDIT_COMMENT'
 export const DELETE_COMMENT = 'DELETE_COMMENT'
 export const DECREMENT_VOTE = 'DECREMENT_VOTE'
 export const INCREMENT_VOTE = 'INCREMENT_VOTE'
+export const DECREMENT_COMMENT_VOTE = 'DECREMENT_COMMENT_VOTE'
+export const INCREMENT_COMMENT_VOTE = 'INCREMENT_COMMENT_VOTE'
 
 
 // To Do: Take out the unneccessary parts of each action creator (ie. addComment doesn't need a voteScore)
@@ -61,6 +63,20 @@ export function decrementVote ({ id, voteScore }) {
 export function incrementVote ({ id, voteScore }) {
   return {
     type: INCREMENT_VOTE,
+    id, voteScore
+  }
+}
+
+export function decrementCommentVote ({ id, voteScore }) {
+  return {
+    type: DECREMENT_COMMENT_VOTE,
+    id, voteScore
+  }
+}
+
+export function incrementCommentVote ({ id, voteScore }) {
+  return {
+    type: INCREMENT_COMMENT_VOTE,
     id, voteScore
   }
 }

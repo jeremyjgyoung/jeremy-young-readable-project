@@ -1,7 +1,9 @@
-import { ADD_COMMENT, EDIT_COMMENT, DELETE_COMMENT } from '../actions'
+import { ADD_COMMENT, EDIT_COMMENT, DELETE_COMMENT, INCREMENT_COMMENT_VOTE, DECREMENT_COMMENT_VOTE } from '../actions'
 
 // To Do: Make logic make sense
 export default function (state = initialCommentState, action) {
+  const { id, voteScore } = action
+
   switch (action.type) {
     case ADD_COMMENT :
       return {
@@ -13,14 +15,21 @@ export default function (state = initialCommentState, action) {
         // ...state,
         // [action]: ...,
       }
-    case DELETE_COMMENT :
-      return {
-        // ...state,
-        // [action]: ...,
-      }
-    default :
-      return state
-  }
+      case DELETE_COMMENT :
+        let delState = {... state}
+        delState[id].deleted = true
+        return delState
+      case INCREMENT_COMMENT_VOTE :
+        let incState = {... state}
+        incState[id].voteScore++
+        return incState
+      case DECREMENT_COMMENT_VOTE :
+        let decState = {... state}
+        decState[id].voteScore--
+        return decState
+      default :
+        return state
+    }
 }
 
 const initialCommentState = {

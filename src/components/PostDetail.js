@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import { deletePost, incrementVote, decrementVote } from '../actions'
+import { deletePost, incrementVote, decrementVote, deleteComment, incrementCommentVote, decrementCommentVote } from '../actions'
 
 class PostList extends Component {
   render() {
@@ -24,13 +24,14 @@ class PostList extends Component {
         ))}
       </div>
       <div className="PostList">
-        {this.props.comments.filter(comment => (comment.parentId===this.props.post_id && this.props.posts[comment.parentId].deleted===false)).map((comment) =>(
+        {this.props.comments.filter(comment => (comment.parentId===this.props.post_id && comment.deleted===false && this.props.posts[comment.parentId].deleted===false)).map((comment) =>(
           <div className="Post" key={comment.id}>
+            <button onClick={() => this.props.deleteComment({id:comment.id, voteScore:comment.deleted})}>x</button>
             <h1 className="Post-author">{comment.author}</h1>
             <p className="Post-body">{comment.body}</p>
             <p className="Post-score"><b>Score:</b> {comment.voteScore}</p>
-            {/* <button onClick={() => this.props.incrementVote({comment.id, voteScore:comment.voteScore})}>+</button>
-            <button onClick={() => this.props.decrementVote({id:comment.id, voteScore:comment.voteScore})}>-</button> */}
+            <button onClick={() => this.props.incrementCommentVote({id:comment.id, voteScore:comment.voteScore})}>+</button>
+            <button onClick={() => this.props.decrementCommentVote({id:comment.id, voteScore:comment.voteScore})}>-</button>
           </div>
         ))}
       </div>
@@ -50,7 +51,10 @@ function mapDispatchToProps(dispatch) {
   return {
     deletePost:  (data) => dispatch(deletePost(data)),
     incrementVote: (data) => dispatch(incrementVote(data)),
-    decrementVote: (data) => dispatch(decrementVote(data))
+    decrementVote: (data) => dispatch(decrementVote(data)),
+    deleteComment:  (data) => dispatch(deleteComment(data)),
+    incrementCommentVote: (data) => dispatch(incrementCommentVote(data)),
+    decrementCommentVote: (data) => dispatch(decrementCommentVote(data))
   }
 }
 
