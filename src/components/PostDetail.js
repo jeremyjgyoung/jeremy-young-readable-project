@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
+import { incrementVote, decrementVote } from '../actions'
 
 class PostList extends Component {
   render() {
@@ -14,6 +15,8 @@ class PostList extends Component {
             <h1 className="Post-author">{post.author}</h1>
             <p className="Post-body">{post.body}</p>
             <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
+            <button onClick={() => this.props.incrementVote({id:post.id, voteScore:post.voteScore})}>+</button>
+            <button onClick={() => this.props.decrementVote({id:post.id, voteScore:post.voteScore})}>-</button>
             <p className="Post-comments"><b>Comments:</b> {post.commentCount}</p>
           </div>
         </Link>
@@ -39,5 +42,11 @@ function mapStateToProps(state) {
     comments: Object.values(state.comments)
   }
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    incrementVote: (data) => dispatch(incrementVote(data)),
+    decrementVote: (data) => dispatch(decrementVote(data))
+  }
+}
 
-export default connect(mapStateToProps)(PostList)
+export default connect(mapStateToProps, mapDispatchToProps)(PostList)

@@ -16,8 +16,8 @@ class PostList extends Component {
             <h1 className="Post-title">{post.title}</h1>
             <h2 className="Post-author">{post.author}</h2>
             <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
-            <button onClick={() => this.props.incrementVote({post.id, post.voteScore})}>+</button>
-            <button onClick={() => this.props.decrementVote({post.id, post.voteScore})}>-</button>
+            <button onClick={() => this.props.incrementVote({id:post.id, voteScore:post.voteScore})}>+</button>
+            <button onClick={() => this.props.decrementVote({id:post.id, voteScore:post.voteScore})}>-</button>
             <p className="Post-comments"><b>Comments:</b> {post.commentCount}</p>
           </div>
         </Link>
@@ -28,6 +28,8 @@ class PostList extends Component {
             <h1 className="Post-title">{post.title}</h1>
             <h2 className="Post-author">{post.author}</h2>
             <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
+            <button onClick={() => this.props.incrementVote({id:post.id, voteScore:post.voteScore})}>+</button>
+            <button onClick={() => this.props.decrementVote({id:post.id, voteScore:post.voteScore})}>-</button>
             <p className="Post-comments"><b>Comments:</b> {post.commentCount}</p>
           </div>
         </Link>

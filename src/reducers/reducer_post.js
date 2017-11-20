@@ -21,14 +21,13 @@ export default function (state = initialPostState, action) {
         // [action]: ...,
       }
     case INCREMENT_VOTE:
-      return {
-        ...state
-      }
+      let incState = {... state}
+      incState[id].voteScore++
+      return incState
     case DECREMENT_VOTE:
-    return {
-      ...state,
-      // state.voteScore - 1
-    }
+      let decState = {... state}
+      decState[id].voteScore--
+      return decState
     default :
       return state
   }
