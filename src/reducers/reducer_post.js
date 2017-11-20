@@ -16,10 +16,10 @@ export default function (state = initialPostState, action) {
         // [action]: ...,
       }
     case DELETE_POST :
-      return {
-        // ...state,
-        // [action]: ...,
-      }
+      let delState = {... state}
+      console.log(delState[id])
+      delState[id].deleted = true
+      return delState
     case INCREMENT_VOTE:
       let incState = {... state}
       incState[id].voteScore++

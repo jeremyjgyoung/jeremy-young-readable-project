@@ -1,18 +1,19 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import { incrementVote, decrementVote } from '../actions'
+import { deletePost, incrementVote, decrementVote } from '../actions'
 
-// Add voting
+//Clean up repeated JSX
 class PostList extends Component {
   render() {
-    {console.log(this.props.category)}
+    {console.log(this.props)}
     return (
       <div className="PostList">
         {(this.props.category==='all'||this.props.category===undefined)
-        ? this.props.posts.map((post) =>(
+        ? this.props.posts.filter(post => post.deleted===false).map((post) =>(
         <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
           <div className="Post" key={post.id}>
+            <button onClick={() => this.props.deletePost({id:post.id, voteScore:post.deleted})}>x</button>
             <h1 className="Post-title">{post.title}</h1>
             <h2 className="Post-author">{post.author}</h2>
             <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
@@ -22,9 +23,10 @@ class PostList extends Component {
           </div>
         </Link>
         ))
-        : this.props.posts.filter(post => post.category===this.props.category).map((post) =>(
+        : this.props.posts.filter(post => (post.category===this.props.category && post.deleted===false)).map((post) =>(
         <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
           <div className="Post" key={post.id}>
+            <button onClick={() => this.props.deletePost({id:post.id, voteScore:post.deleted})}>x</button>
             <h1 className="Post-title">{post.title}</h1>
             <h2 className="Post-author">{post.author}</h2>
             <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
@@ -48,6 +50,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
+    deletePost:  (data) => dispatch(deletePost(data)),
     incrementVote: (data) => dispatch(incrementVote(data)),
     decrementVote: (data) => dispatch(decrementVote(data))
   }

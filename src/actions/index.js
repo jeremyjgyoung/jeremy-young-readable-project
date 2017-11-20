@@ -23,10 +23,10 @@ export function editPost ({ id, timestamp, title, body, author, category, voteSc
   }
 }
 
-export function deletePost ({ id, timestamp, title, body, author, category, voteScore, deleted }) {
+export function deletePost ({ id, deleted }) {
   return {
     type: DELETE_POST,
-    id, timestamp, title, body, author, category, voteScore, deleted,
+    id, deleted,
   }
 }
 

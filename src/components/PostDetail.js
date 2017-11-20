@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
-import { incrementVote, decrementVote } from '../actions'
+import { deletePost, incrementVote, decrementVote } from '../actions'
 
 class PostList extends Component {
   render() {
     return (
       <div>
       <div className="PostList">
-        {this.props.posts.filter(post => post.id===this.props.post_id).map((post) =>(
+        {this.props.posts.filter(post => (post.id===this.props.post_id && post.deleted===false)).map((post) =>(
         <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
           <div className="Post" key={post.id}>
+            <button onClick={() => this.props.deletePost({id:post.id, voteScore:post.deleted})}>x</button>
             <h1 className="Post-title">{post.title}</h1>
             <h1 className="Post-author">{post.author}</h1>
             <p className="Post-body">{post.body}</p>
@@ -42,8 +43,10 @@ function mapStateToProps(state) {
     comments: Object.values(state.comments)
   }
 }
+
 function mapDispatchToProps(dispatch) {
   return {
+    deletePost:  (data) => dispatch(deletePost(data)),
     incrementVote: (data) => dispatch(incrementVote(data)),
     decrementVote: (data) => dispatch(decrementVote(data))
   }
