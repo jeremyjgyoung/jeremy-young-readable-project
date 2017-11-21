@@ -9,8 +9,7 @@ export const INCREMENT_VOTE = 'INCREMENT_VOTE'
 export const DECREMENT_COMMENT_VOTE = 'DECREMENT_COMMENT_VOTE'
 export const INCREMENT_COMMENT_VOTE = 'INCREMENT_COMMENT_VOTE'
 
-
-// To Do: Take out the unneccessary parts of each action creator (ie. addComment doesn't need a voteScore)
+// To Do: Take out the unneccessary parts of each action creator
 export function addPost ({ id, timestamp, title, body, author, category, voteScore, deleted }) {
   return {
     type: ADD_POST,

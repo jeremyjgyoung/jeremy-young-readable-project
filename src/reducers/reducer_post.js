@@ -18,15 +18,23 @@ export default function (state = initialPostState, action) {
         // [action]: ...,
       }
     case DELETE_POST :
-      let delState = {... state}
+      let delState = {...state}
       delState[id].deleted = true
       return delState
+    // case INCREMENT_VOTE :
+    //   return {
+    //     ...state,
+    //       [id]: {
+    //         ...state[id],
+    //         [voteScore]: [id].voteScore++,
+    //       }
+    //   }
     case INCREMENT_VOTE :
-      let incState = {... state}
+      let incState = {...state}
       incState[id].voteScore++
       return incState
     case DECREMENT_VOTE :
-      let decState = {... state}
+      let decState = {...state}
       decState[id].voteScore--
       return decState
     default :

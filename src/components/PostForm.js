@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import { addPost } from '../actions'
 
 // Be able to post
 class PostForm extends Component {
@@ -12,17 +14,23 @@ class PostForm extends Component {
     return (
       <div className="PostForm">
         <form className="Form">
-          <form>
             <input type="text" className="Input"
               value={this.state.email}
               onChange={this.handleChange}
              />
-          </form>
-          <button type="submit" className="Post-button">POST</button>
+          <button type="submit" className="Post-button"
+            onClick={() => this.props.addPost({body:this.state.typedPost})}
+            >POST</button>
         </form>
       </div>
     )
   }
-} 
+}
 
-export default PostForm
+function mapDispatchToProps(dispatch) {
+  return {
+    addPost:  (data) => dispatch(addPost(data))
+  }
+}
+
+export default connect(mapDispatchToProps)(PostForm)
