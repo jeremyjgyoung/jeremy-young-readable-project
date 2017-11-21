@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import { deletePost, incrementVote, decrementVote, deleteComment, incrementCommentVote, decrementCommentVote } from '../actions'
+import sortBy from 'sort-by'
 
 class PostList extends Component {
   render() {
@@ -24,7 +25,7 @@ class PostList extends Component {
         ))}
       </div>
       <div className="PostList">
-        {this.props.comments.filter(comment => (comment.parentId===this.props.post_id && comment.deleted===false && this.props.posts[comment.parentId].deleted===false)).map((comment) =>(
+        {this.props.comments.filter(comment => (comment.parentId===this.props.post_id && comment.deleted===false && this.props.posts[comment.parentId].deleted===false)).sort(sortBy('-voteScore')).map((comment) =>(
           <div className="Post" key={comment.id}>
             <button onClick={() => this.props.deleteComment({id:comment.id, voteScore:comment.deleted})}>x</button>
             <h1 className="Post-author">{comment.author}</h1>

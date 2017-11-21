@@ -1,6 +1,8 @@
-import { ADD_COMMENT, EDIT_COMMENT, DELETE_COMMENT, INCREMENT_COMMENT_VOTE, DECREMENT_COMMENT_VOTE } from '../actions'
+import { ADD_COMMENT, EDIT_COMMENT, DELETE_COMMENT,
+  INCREMENT_COMMENT_VOTE, DECREMENT_COMMENT_VOTE } from '../actions'
 
 // To Do: Make logic make sense
+// Clean up logic with ES6 code
 export default function (state = initialCommentState, action) {
   const { id, voteScore } = action
 

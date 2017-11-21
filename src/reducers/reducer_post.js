@@ -1,6 +1,8 @@
-import { ADD_POST, EDIT_POST, DELETE_POST, INCREMENT_VOTE, DECREMENT_VOTE } from '../actions'
+import { ADD_POST, EDIT_POST, DELETE_POST,
+  INCREMENT_VOTE, DECREMENT_VOTE } from '../actions'
 
 // To Do: Make logic make sense
+// Clean up logic with ES6 code
 export default function (state = initialPostState, action) {
   const { id, voteScore } = action
 
