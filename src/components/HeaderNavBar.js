@@ -11,7 +11,7 @@ class HeaderNavBar extends Component {
         </header>
         <nav className="Nav-bar">
           <ul>
-            {this.props.categories.map((category) =>
+            {this.props.categories.map((category, index) =>
               <Link className="Category-links" to={`/${category.path}`}>
                 <li key={category.name}>{category.name}</li>
               </Link>
