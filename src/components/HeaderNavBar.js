@@ -12,7 +12,9 @@ class HeaderNavBar extends Component {
         <nav className="Nav-bar">
           <ul>
             {this.props.categories.map((category) =>
-              <Link className="Category-links" to={`/${category.path}`}><li key={category.name}>{category.name}</li></Link>
+              <Link className="Category-links" to={`/${category.path}`}>
+                <li key={category.name}>{category.name}</li>
+              </Link>
             )}
           </ul>
         </nav>

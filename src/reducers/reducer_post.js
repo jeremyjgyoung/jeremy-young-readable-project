@@ -4,7 +4,7 @@ import { ADD_POST, EDIT_POST, DELETE_POST,
 // To Do: Make logic make sense
 // Clean up logic with ES6 code
 export default function (state = initialPostState, action) {
-  const { id, voteScore } = action
+  const { id } = action
 
   switch (action.type) {
     case ADD_POST :
@@ -21,14 +21,6 @@ export default function (state = initialPostState, action) {
       let delState = {...state}
       delState[id].deleted = true
       return delState
-    // case INCREMENT_VOTE :
-    //   return {
-    //     ...state,
-    //       [id]: {
-    //         ...state[id],
-    //         [voteScore]: [id].voteScore++,
-    //       }
-    //   }
     case INCREMENT_VOTE :
       let incState = {...state}
       incState[id].voteScore++

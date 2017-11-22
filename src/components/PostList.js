@@ -30,8 +30,8 @@ class PostList extends Component {
             <h1 className="Post-title">{post.title}</h1>
             <h2 className="Post-author">{post.author}</h2>
             <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
-            <button onClick={() => this.props.incrementVote({id:post.id, voteScore:post.voteScore})}>+</button>
-            <button onClick={() => this.props.decrementVote({id:post.id, voteScore:post.voteScore})}>-</button>
+            <button onClick={() => this.props.incrementVote({id:post.id})}>+</button>
+            <button onClick={() => this.props.decrementVote({id:post.id})}>-</button>
             <p className="Post-comments"><b>Comments:</b> {post.commentCount}</p>
           </div>
         </Link>
@@ -50,7 +50,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    deletePost:  (data) => dispatch(deletePost(data)),
+    deletePost: (data) => dispatch(deletePost(data)),
     incrementVote: (data) => dispatch(incrementVote(data)),
     decrementVote: (data) => dispatch(decrementVote(data))
   }

@@ -4,7 +4,7 @@ import { ADD_COMMENT, EDIT_COMMENT, DELETE_COMMENT,
 // To Do: Make logic make sense
 // Clean up logic with ES6 code
 export default function (state = initialCommentState, action) {
-  const { id, voteScore } = action
+  const { id } = action
 
   switch (action.type) {
     case ADD_COMMENT :
@@ -18,15 +18,15 @@ export default function (state = initialCommentState, action) {
         // [action]: ...,
       }
       case DELETE_COMMENT :
-        let delState = {... state}
+        let delState = {...state}
         delState[id].deleted = true
         return delState
       case INCREMENT_COMMENT_VOTE :
-        let incState = {... state}
+        let incState = {...state}
         incState[id].voteScore++
         return incState
       case DECREMENT_COMMENT_VOTE :
-        let decState = {... state}
+        let decState = {...state}
         decState[id].voteScore--
         return decState
       default :

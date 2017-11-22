@@ -20,7 +20,7 @@ class PostForm extends Component {
              />
           <button type="submit" className="Post-button"
             onClick={() => this.props.addPost({body:this.state.typedPost})}
-            >POST</button>
+          >POST</button>
         </form>
       </div>
     )
@@ -29,7 +29,7 @@ class PostForm extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addPost:  (data) => dispatch(addPost(data))
+    addPost: (data) => dispatch(addPost(data))
   }
 }
 
