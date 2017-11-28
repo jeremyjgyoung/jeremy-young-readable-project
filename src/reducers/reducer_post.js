@@ -11,7 +11,7 @@ export default function (state = initialPostState, action) {
       console.log(`${randomlyGenId} the post is author: ${author} title: ${title} body: ${body} category: ${category} `)
       return {
         ...state,
-        randomlyGenId: {
+        [randomlyGenId]: {
           id: randomlyGenId,
           timestamp: Date.now(),
           title: `${title}`,
