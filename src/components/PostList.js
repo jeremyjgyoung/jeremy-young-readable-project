@@ -10,8 +10,8 @@ class PostList extends Component {
     let allMappedPosts = (
       this.props.posts.filter(post =>
         post.deleted===false).sort(sortBy('-voteScore')).map((post) =>(
-        <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
-          <div className="Post" key={post.id}>
+        <Link className="Category-links" to={`/${this.props.category}/${post.id}`} key={post.id}>
+          <div className="Post">
             <button onClick={() =>
               this.props.deletePost({id:post.id, voteScore:post.deleted})}>x</button>
             <h1 className="Post-title">{post.title}</h1>
@@ -29,7 +29,7 @@ class PostList extends Component {
     let categoryMappedPosts = (
       this.props.posts.filter(post =>
         (post.category===this.props.category && post.deleted===false)).sort(sortBy('-voteScore')).map((post) =>(
-      <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
+      <Link className="Category-links" to={`/${this.props.category}/${post.id}`} key={post.id}>
         <div className="Post" key={post.id}>
           <button onClick={() =>
             this.props.deletePost({id:post.id, voteScore:post.deleted})}>x</button>

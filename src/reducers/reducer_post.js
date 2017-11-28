@@ -1,16 +1,29 @@
+import {uniqid} from 'uniqid'
 import { ADD_POST, EDIT_POST, DELETE_POST,
   INCREMENT_VOTE, DECREMENT_VOTE } from '../actions'
 
 // To Do: Make logic make sense
 // Clean up logic with ES6 code
 export default function (state = initialPostState, action) {
-  const { id } = action
+  const { id, voteScore, author, title, body, category } = action
 
   switch (action.type) {
     case ADD_POST :
+      let randomlyGenId = `${Math.floor(1000000000*Math.random())}${Date.now()}`
+      console.log(`${randomlyGenId} the post is author: ${author} title: ${title} body: ${body} category: ${category} `)
       return {
-        // ...state,
-        // [action]: ...,
+        ...state,
+        randomlyGenId: {
+          id: randomlyGenId,
+          timestamp: Date.now(),
+          title: `${title}`,
+          body: `${body}`,
+          author: `${author}`,
+          category: `${category}`,
+          voteScore: 0,
+          deleted: false,
+          commentCount: 0
+        }
       }
     case EDIT_POST :
       return {
@@ -21,7 +34,16 @@ export default function (state = initialPostState, action) {
       let delState = {...state}
       delState[id].deleted = true
       return delState
+    // case INCREMENT_VOTE :
+    //   return {
+    //     ...state,
+    //     [id]: {
+    //       ...state[id],
+    //         voteScore: ++voteScore
+    //     }
+    //   }
     case INCREMENT_VOTE :
+      console.log('incremented vote')
       let incState = {...state}
       incState[id].voteScore++
       return incState

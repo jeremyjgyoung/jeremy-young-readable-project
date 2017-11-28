@@ -4,26 +4,63 @@ import { addPost } from '../actions'
 
 // Be able to post
 class PostForm extends Component {
-
-  state = { typedPost: '' }
-  handleChange = (event) => {
-    this.setState({typedPost: event.target.value.trim() })
+  state = {
+    author: '',
+    title: '',
+    typedPost: '',
+    category: ''
   }
-
+  handleChangeAuthor = (event) => {
+    this.setState({author: event.target.value })
+  }
+  handleChangeTitle = (event) => {
+    this.setState({title: event.target.value })
+  }
+  handleChangePost = (event) => {
+    this.setState({typedPost: event.target.value })
+  }
+  handleChangeCategory = (event) => {
+    this.setState({category: event.target.value })
+  }
   render() {
     return (
       <div className="PostForm">
         <form className="Form">
             <input type="text" className="Input"
-              value={this.state.email}
-              onChange={this.handleChange}
+              placeholder="your name"
+              value={this.state.author}
+              onChange={this.handleChangeAuthor}
              />
+             <input type="text" className="Input"
+               placeholder="title"
+               value={this.state.title}
+               onChange={this.handleChangeTitle}
+              />
+            <input type="text" className="Input"
+              placeholder="post"
+              value={this.state.typedPost}
+              onChange={this.handleChangePost}
+             />
+             <select
+               value={this.state.category}
+               onChange={this.handleChangeCategory}>
+                <option value="">Choose Category</option>
+                <option value="react">React</option>
+                <option value="redux">Redux</option>
+                <option value="read">Udacity</option>
+             </select>
           <button type="submit" className="Post-button"
-            onClick={() => this.props.addPost({body:this.state.typedPost})}
+            onClick={() => this.props.addPost({author:this.state.author, title:this.state.title, body:this.state.typedPost, category:this.state.category, })}
           >POST</button>
         </form>
       </div>
     )
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    posts: Object.values(state.posts)
   }
 }
 
@@ -33,4 +70,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapDispatchToProps)(PostForm)
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm)
