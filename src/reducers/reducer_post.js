@@ -1,12 +1,10 @@
-import {uniqid} from 'uniqid'
 import { ADD_POST, EDIT_POST, DELETE_POST,
   INCREMENT_VOTE, DECREMENT_VOTE } from '../actions'
 
 // To Do: Make logic make sense
 // Clean up logic with ES6 code
 export default function (state = initialPostState, action) {
-  const { id, voteScore, author, title, body, category } = action
-
+  const { author, title, body, category, id } = action
   switch (action.type) {
     case ADD_POST :
       let randomlyGenId = `${Math.floor(1000000000*Math.random())}${Date.now()}`
