@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import { addPost } from '../actions'
 
 // Be able to post
+// Clean up handlers, if possible
 class PostForm extends Component {
   state = {
     author: '',
@@ -49,8 +50,8 @@ class PostForm extends Component {
                 <option value="redux">Redux</option>
                 <option value="read">Udacity</option>
              </select>
-          <button type="submit" className="Post-button"
-            onClick={() => this.props.addPost({author:this.state.author, title:this.state.title, body:this.state.typedPost, category:this.state.category, })}
+          <button type="submit" className="Post-button" onClick={() =>
+            this.props.addPost({author:this.state.author, title:this.state.title, body:this.state.typedPost, category:this.state.category, })}
           >POST</button>
         </form>
       </div>

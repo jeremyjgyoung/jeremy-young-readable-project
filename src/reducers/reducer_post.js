@@ -1,7 +1,6 @@
 import { ADD_POST, EDIT_POST, DELETE_POST,
   INCREMENT_VOTE, DECREMENT_VOTE } from '../actions'
 
-// To Do: Make logic make sense
 export default function (state = initialPostState, action) {
   const { author, title, body, category, id, voteScore} = action
   switch (action.type) {
@@ -11,7 +10,7 @@ export default function (state = initialPostState, action) {
       return {
         ...state,
         [randomlyGenId]: {
-          id: randomlyGenId,
+          id: `${randomlyGenId}`,
           timestamp: Date.now(),
           title: `${title}`,
           body: `${body}`,
@@ -29,15 +28,15 @@ export default function (state = initialPostState, action) {
       }
     case DELETE_POST :
       return {...state,
-        [id]:{ ...state[id], deleted: true}
+        [id]:{...state[id], deleted: true}
       }
     case INCREMENT_VOTE :
       return {...state,
-        [id]:{ ...state[id], voteScore: voteScore+1}
+        [id]:{...state[id], voteScore: voteScore+1}
       }
     case DECREMENT_VOTE :
       return {...state,
-        [id]:{ ...state[id], voteScore: voteScore-1}
+        [id]:{...state[id], voteScore: voteScore-1}
       }
     default :
       return state
