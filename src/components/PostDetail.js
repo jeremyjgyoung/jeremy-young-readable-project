@@ -10,8 +10,8 @@ class PostList extends Component {
       <div>
       <div className="PostList">
         {Object.values(this.props.posts).filter(post => (post.id===this.props.post_id && post.deleted===false)).map((post) =>(
-        <Link className="Category-links" to={`/${this.props.category}/${post.id}`}>
-          <div className="Post" key={post.id}>
+        <Link className="Category-links" to={`/${this.props.category}/${post.id}`} key={post.id}>
+          <div className="Post">
             <button onClick={() => this.props.deletePost({id:post.id, voteScore:post.deleted})}>x</button>
             <h1 className="Post-title">{post.title}</h1>
             <h1 className="Post-author">{post.author}</h1>

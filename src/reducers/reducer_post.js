@@ -2,9 +2,8 @@ import { ADD_POST, EDIT_POST, DELETE_POST,
   INCREMENT_VOTE, DECREMENT_VOTE } from '../actions'
 
 // To Do: Make logic make sense
-// Clean up logic with ES6 code
 export default function (state = initialPostState, action) {
-  const { author, title, body, category, id } = action
+  const { author, title, body, category, id, voteScore} = action
   switch (action.type) {
     case ADD_POST :
       let randomlyGenId = `${Math.floor(1000000000*Math.random())}${Date.now()}`
@@ -29,26 +28,17 @@ export default function (state = initialPostState, action) {
         // [action]: ...,
       }
     case DELETE_POST :
-      let delState = {...state}
-      delState[id].deleted = true
-      return delState
-    // case INCREMENT_VOTE :
-    //   return {
-    //     ...state,
-    //     [id]: {
-    //       ...state[id],
-    //         voteScore: ++voteScore
-    //     }
-    //   }
+      return {...state,
+        [id]:{ ...state[id], deleted: true}
+      }
     case INCREMENT_VOTE :
-      console.log('incremented vote')
-      let incState = {...state}
-      incState[id].voteScore++
-      return incState
+      return {...state,
+        [id]:{ ...state[id], voteScore: voteScore+1}
+      }
     case DECREMENT_VOTE :
-      let decState = {...state}
-      decState[id].voteScore--
-      return decState
+      return {...state,
+        [id]:{ ...state[id], voteScore: voteScore-1}
+      }
     default :
       return state
   }
