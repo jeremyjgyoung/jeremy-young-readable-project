@@ -35,6 +35,15 @@
   border: medium solid #75DBCD;
   color: #75DBCD;
 }
+
+.Button-to-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+.Button-delete {
+  width: 30px;
+}
 .Post-title {
   font-size: large;
   padding: 10px 0;
@@ -55,28 +64,28 @@
   padding: 20px 0;
   margin: 0;
 }
+.Div-score {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 .Post-score {
   font-size: medium;
-  padding: 0;
+  padding: 0 5px 0 0;
   margin: 0;
+}
+.Button-plus {
+  width: 30px;
+}
+.Button-minus {
+  width: 30px;
 }
 .Post-comments {
   font-size: medium;
   padding: 5px 0;
   margin: 0;
 }
-.Post-button {
-  text-decoration: none;
-  background-color: #75DBCD;
-  color: white;
-  padding: 12px 25px;
-  margin-left: 20px;
-  font-size: 16px;
-  box-shadow: 5px 5px 5px #888888;
-}
-.Post-button:hover {
-  box-shadow: 2px 2px 2px #888888;
-}
+
 .Input-name {
   font-size: large;
   width: 80%;
@@ -98,6 +107,19 @@
 .Post-cat-post {
   padding-top: 10px;
 }
+.Post-button {
+  text-decoration: none;
+  background-color: #75DBCD;
+  color: white;
+  padding: 12px 25px;
+  margin-left: 20px;
+  font-size: 16px;
+  box-shadow: 5px 5px 5px #888888;
+}
+.Post-button:hover {
+  box-shadow: 2px 2px 2px #888888;
+}
+
 .Nav-bar {
   padding: 20px 80px;
 }

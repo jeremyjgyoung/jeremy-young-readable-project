@@ -18,15 +18,19 @@ class PostList extends Component {
         {filteredPosts.map((post) =>(
           <Link className="Category-links" to={`/${this.props.category}/${post.id}`} key={post.id}>
             <div className="Post">
-              <button onClick={() =>
+              <div className="Button-to-right">
+                <button className="Button-delete" onClick={() =>
                 this.props.deletePost({id:post.id, voteScore:post.deleted})}>x</button>
+              </div>
               <h1 className="Post-title">{post.title}</h1>
               <h2 className="Post-author">{post.author}</h2>
-              <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
-              <button onClick={() =>
-                this.props.incrementVote({id:post.id, voteScore:post.voteScore})}>+</button>
-              <button onClick={() =>
-                this.props.decrementVote({id:post.id, voteScore:post.voteScore})}>-</button>
+              <div className="Div-score">
+                <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
+                <button className="Button-minus" onClick={() =>
+                  this.props.decrementVote({id:post.id, voteScore:post.voteScore})}>-</button>
+                <button className="Button-plus" onClick={() =>
+                  this.props.incrementVote({id:post.id, voteScore:post.voteScore})}>+</button>
+              </div>
               <p className="Post-comments"><b>Comments:</b> {post.commentCount}</p>
             </div>
           </Link>
