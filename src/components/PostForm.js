@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { addPost } from '../actions'
 
-// Be able to post
 // Clean up handlers, if possible
 class PostForm extends Component {
   state = {

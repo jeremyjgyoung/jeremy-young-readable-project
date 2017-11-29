@@ -21,5 +21,6 @@ const composeEnhancers = window._REDUX_DEVTOOLS_EXTENSION_COMPOSE_ || compose
 const store = createStore(reducer,
   composeEnhancers(applyMiddleware(logger)))
 
-ReactDOM.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>, document.getElementById('root'));
+ReactDOM.render(<Provider store={store}><BrowserRouter><App /></BrowserRouter></Provider>,
+  document.getElementById('root'));
 registerServiceWorker();
