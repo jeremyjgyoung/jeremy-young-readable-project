@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import { addPost } from '../actions'
 
 // Clean up handlers, if possible
@@ -26,32 +26,34 @@ class PostForm extends Component {
     return (
       <div className="PostForm">
         <form className="Form">
-            <input type="text" className="Input"
+            <input type="text" className="Input-name"
               placeholder="your name"
               value={this.state.author}
               onChange={this.handleChangeAuthor}
              />
-             <input type="text" className="Input"
+             <input type="text" className="Input-title"
                placeholder="title"
                value={this.state.title}
                onChange={this.handleChangeTitle}
               />
-            <input type="text" className="Input"
+            <textarea className="Input-post"
               placeholder="post"
               value={this.state.typedPost}
               onChange={this.handleChangePost}
              />
-             <select
-               value={this.state.category}
-               onChange={this.handleChangeCategory}>
-                <option value="">Choose Category</option>
-                <option value="react">React</option>
-                <option value="redux">Redux</option>
-                <option value="read">Udacity</option>
-             </select>
-          <button type="submit" className="Post-button" onClick={() =>
-            this.props.addPost({author:this.state.author, title:this.state.title, body:this.state.typedPost, category:this.state.category, })}
-          >POST</button>
+             <div className="Post-cat-post">
+               <select className="Select-category"
+                 value={this.state.category}
+                 onChange={this.handleChangeCategory}>
+                  <option value="">Choose Category</option>
+                  <option value="react">React</option>
+                  <option value="redux">Redux</option>
+                  <option value="read">Udacity</option>
+               </select>
+               <button type="submit" className="Post-button" onClick={() =>
+                 this.props.addPost({author:this.state.author, title:this.state.title, body:this.state.typedPost, category:this.state.category, })}
+               >POST</button>
+            </div>
         </form>
       </div>
     )

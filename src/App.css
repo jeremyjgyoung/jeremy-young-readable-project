@@ -77,9 +77,26 @@
 .Post-button:hover {
   box-shadow: 2px 2px 2px #888888;
 }
-.Input {
+.Input-name {
   font-size: large;
-  padding: 12px;
+  width: 80%;
+}
+.Input-title {
+  font-size: large;
+  width: 80%;
+}
+.Input-post {
+  font-size: large;
+  width: 80%;
+  height: 200px;
+}
+.Select-category {
+  font-size: large;
+  width: 30%;
+  height: 50px;
+}
+.Post-cat-post {
+  padding-top: 10px;
 }
 .Nav-bar {
   padding: 20px 80px;
