@@ -22,10 +22,13 @@ class PostForm extends Component {
   handleChangeCategory = (event) => {
     this.setState({category: event.target.value })
   }
+  handleSubmit = (event) => {
+    event.preventDefault()
+  }
   render() {
     return (
       <div className="PostForm">
-        <form className="Form">
+        <form onSubmit={this.handleSubmit} className="Form">
             <input type="text" className="Input-name"
               placeholder="your name"
               value={this.state.author}
@@ -50,7 +53,7 @@ class PostForm extends Component {
                   <option value="redux">Redux</option>
                   <option value="read">Udacity</option>
                </select>
-               <button type="submit" className="Post-button" onClick={() =>
+               <button className="Post-button" onClick={() =>
                  this.props.addPost({author:this.state.author, title:this.state.title, body:this.state.typedPost, category:this.state.category, })}
                >POST</button>
             </div>
