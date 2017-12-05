@@ -2,14 +2,24 @@ import { ADD_COMMENT, EDIT_COMMENT, DELETE_COMMENT,
   INCREMENT_COMMENT_VOTE, DECREMENT_COMMENT_VOTE } from '../actions'
 
 export default function (state = initialCommentState, action) {
-  const { id, voteScore } = action
+  const { author, body, id, parentId, voteScore} = action
 
   switch (action.type) {
     case ADD_COMMENT :
-      return {
-        // ...state,
-        // [action]: ...,
+    let randomlyGenId = `${Math.floor(1000000000*Math.random())}${Date.now()}`
+    return {
+      ...state,
+      [randomlyGenId]: {
+        id: `${randomlyGenId}`,
+        parentId: `${parentId}`,
+        timestamp: Date.now(),
+        body: `${body}`,
+        author: `${author}`,
+        voteScore: 0,
+        deleted: false,
+        parentDeleted: false
       }
+    }
     case EDIT_COMMENT :
       return {
         // ...state,

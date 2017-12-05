@@ -6,7 +6,6 @@ export default function (state = initialPostState, action) {
   switch (action.type) {
     case ADD_POST :
       let randomlyGenId = `${Math.floor(1000000000*Math.random())}${Date.now()}`
-      console.log(`${randomlyGenId} the post is author: ${author} title: ${title} body: ${body} category: ${category} `)
       return {
         ...state,
         [randomlyGenId]: {
