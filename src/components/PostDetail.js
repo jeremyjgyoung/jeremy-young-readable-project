@@ -99,12 +99,12 @@ class PostDetail extends Component {
           <button onClick={this.closePostModal}>close</button>
           <form onSubmit={this.handleSubmit} className="Form">
               <input type="text" className="Input-name"
-                placeholder="your name"
+                placeholder="Your Name"
                 value={this.state.author}
                 onChange={this.handleChangeAuthor}
                />
               <textarea className="Input-post"
-                placeholder="post"
+                placeholder="Your Comment"
                 value={this.state.typedPost}
                 onChange={this.handleChangePost}
                />

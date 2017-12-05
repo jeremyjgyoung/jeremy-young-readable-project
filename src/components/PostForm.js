@@ -55,17 +55,17 @@ class PostForm extends Component {
           <button onClick={this.closePostModal}>close</button>
           <form onSubmit={this.handleSubmit} className="Form">
               <input type="text" className="Input-name"
-                placeholder="your name"
+                placeholder="Your Name"
                 value={this.state.author}
                 onChange={this.handleChangeAuthor}
                />
                <input type="text" className="Input-title"
-                 placeholder="title"
+                 placeholder="Title"
                  value={this.state.title}
                  onChange={this.handleChangeTitle}
                 />
               <textarea className="Input-post"
-                placeholder="post"
+                placeholder="Your Post"
                 value={this.state.typedPost}
                 onChange={this.handleChangePost}
                />
