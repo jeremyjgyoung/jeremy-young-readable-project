@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { deletePost, incrementVote, decrementVote,
+import { deletePost, addPost, decrementVote,
   addComment, deleteComment, incrementCommentVote, decrementCommentVote } from '../actions'
 import sortBy from 'sort-by'
 import Modal from 'react-modal'
+import * as ReadableAPI from '../utils/ReadableAPI'
 
 class PostDetail extends Component {
   state = {
@@ -57,8 +58,10 @@ class PostDetail extends Component {
                 <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
                 <button className="Button-minus" onClick={() =>
                   this.props.decrementVote({id:post.id, voteScore:post.voteScore})}>-</button>
-                <button className="Button-plus" onClick={() =>
-                  this.props.incrementVote({id:post.id, voteScore:post.voteScore})}>+</button>
+                <button className="Button-plus" onClick={() => {
+                  ReadableAPI.upVote(post.id).then(post =>
+                    this.props.addPost({post}))
+                }}>+</button>
               </div>
               <p className="Post-comments"><b>Comments:</b> {post.commentCount}</p>
               <button
@@ -150,7 +153,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     deletePost:  (data) => dispatch(deletePost(data)),
-    incrementVote: (data) => dispatch(incrementVote(data)),
+    addPost: (data) => dispatch(addPost(data)),
     decrementVote: (data) => dispatch(decrementVote(data)),
     addComment: (data) => dispatch(addComment(data)),
     deleteComment:  (data) => dispatch(deleteComment(data)),

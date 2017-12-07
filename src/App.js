@@ -7,7 +7,7 @@ import PostList from './components/PostList'
 import PostDetail from './components/PostDetail'
 import * as ReadableAPI from './utils/ReadableAPI'
 import { connect } from 'react-redux'
-import { editPost } from './actions'
+import { addPost } from './actions'
 
 class App extends Component {
   state = {
@@ -20,7 +20,8 @@ class App extends Component {
       this.setState({ categories })
     })
     ReadableAPI.getPosts().then(posts => {
-      posts.map(post => this.props.editPost(post))
+      console.log(posts)
+      posts.map(post => this.props.addPost({post:post}))
     })
   }
 
@@ -66,7 +67,7 @@ class App extends Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    editPost: (data) => dispatch(editPost(data))
+    addPost: (data) => dispatch(addPost(data))
   }
 }
 

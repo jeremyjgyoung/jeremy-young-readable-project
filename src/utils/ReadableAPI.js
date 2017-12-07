@@ -19,6 +19,17 @@ export const getPosts = () =>
   fetch(`${api}/posts`, { headers })
     .then(res => res.json())
 
+export const upVote = (id) =>
+  fetch(`${api}/posts/${id}`, {
+    method: 'POST',
+    headers: {
+      ...headers,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({option: 'upVote'})
+  })
+    .then(res => res.json())
+
 export const getAll = () =>
   fetch(`${api}/contacts`, { headers })
     .then(res => res.json())

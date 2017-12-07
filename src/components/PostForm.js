@@ -35,7 +35,15 @@ class PostForm extends Component {
   }
   onPost = () => {
     this.setState({postModalIsOpen: false})
-    this.props.addPost({author:this.state.author, title:this.state.title, body:this.state.typedPost, category:this.state.category })
+    this.props.addPost({post: {
+        id: `${Math.floor(1000000000*Math.random())}${Date.now()}`,
+        author:this.state.author,
+        title:this.state.title,
+        body:this.state.typedPost,
+        category:this.state.category,
+        deleted: false,
+        commentCount: 0
+      }})
   }
   render() {
     return (
