@@ -133,12 +133,17 @@ ul {
   padding: 0;
   list-style: none;
 }
-li {
+.NavLink-category {
+  text-decoration: none;
   color: #75DBCD;
   padding: 10px 20px;
   border: medium solid #75DBCD;
 }
-li:hover {
-  background-color: #75DBCD;
+.NavLink-category:hover {
   color: white;
+  background-color: #75DBCD;
+}
+.active-category{
+  color: white;
+  background-color: #75DBCD;
 }

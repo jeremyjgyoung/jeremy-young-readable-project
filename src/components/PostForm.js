@@ -76,7 +76,7 @@ class PostForm extends Component {
                     <option value="">Category</option>
                     <option value="react">React</option>
                     <option value="redux">Redux</option>
-                    <option value="read">Udacity</option>
+                    <option value="udacity">Udacity</option>
                  </select>
                  <button className="Post-button" onClick={this.onPost}>
                    POST

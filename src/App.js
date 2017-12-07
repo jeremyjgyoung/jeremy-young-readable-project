@@ -5,34 +5,32 @@ import HeaderNavBar from './components/HeaderNavBar'
 import PostForm from './components/PostForm'
 import PostList from './components/PostList'
 import PostDetail from './components/PostDetail'
-
-const categories = [
-  {
-    name: 'all',
-    path: 'all'
-  },
-  {
-    name: 'react',
-    path: 'react'
-  },
-  {
-    name: 'redux',
-    path: 'redux'
-  },
-  {
-    name: 'udacity',
-    path: 'udacity'
-  }
-]
+import * as ReadableAPI from './utils/ReadableAPI'
+import { connect } from 'react-redux'
+import { editPost } from './actions'
 
 class App extends Component {
+  state = {
+    categories: []
+  }
+
+// How does it get back into the store?
+  componentDidMount() {
+    ReadableAPI.getCategories().then((categories) => {
+      this.setState({ categories })
+    })
+    ReadableAPI.getPosts().then(posts => {
+      posts.map(post => this.props.editPost(post))
+    })
+  }
+
   render() {
     return (
       <div className="App">
         <Route exact path='/' render={() => (
           <div>
             <HeaderNavBar
-              categories={categories}
+              categories={this.state.categories}
             />
             <PostForm />
             <PostList />
@@ -41,7 +39,7 @@ class App extends Component {
         <Route exact path='/:category' render={({ match }) => (
           <div>
             <HeaderNavBar
-              categories={categories}
+              categories={this.state.categories}
             />
             <PostForm />
             <PostList
@@ -52,7 +50,7 @@ class App extends Component {
         <Route path='/:category/:post_id' render={({ match }) => (
           <div>
             <HeaderNavBar
-              categories={categories}
+              categories={this.state.categories}
             />
             <PostForm />
             <PostDetail
@@ -66,4 +64,10 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapDispatchToProps(dispatch) {
+  return {
+    editPost: (data) => dispatch(editPost(data))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App)

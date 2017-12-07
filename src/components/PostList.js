@@ -3,8 +3,18 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { deletePost, incrementVote, decrementVote } from '../actions'
 import sortBy from 'sort-by'
+import * as ReadableAPI from '../utils/ReadableAPI'
 
 class PostList extends Component {
+  state = {}
+  componentDidMount() {
+    ReadableAPI.getPosts().then((posts) => {
+      console.log(posts)
+      this.setState(() => ({
+        posts: Object.keys(posts)
+      }))
+    })
+  }
   render() {
     let allMappedPosts = this.props.posts.filter(post=>
       post.deleted===false).sort(sortBy('-voteScore'))

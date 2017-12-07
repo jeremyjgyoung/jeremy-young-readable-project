@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 // Create a way to create an active link
 class HeaderNavBar extends Component {
@@ -12,9 +12,9 @@ class HeaderNavBar extends Component {
         <nav className="Nav-bar">
           <ul>
             {this.props.categories.map((category, index) =>
-              <Link className="Category-links" to={`/${category.path}`} key={category.name}>
+              <NavLink className="NavLink-category" activeClassName="active-category" to={`/${category.path}`} key={category.name}>
                 <li>{category.name}</li>
-              </Link>
+              </NavLink>
             )}
           </ul>
         </nav>
