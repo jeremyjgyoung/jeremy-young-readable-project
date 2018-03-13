@@ -29,6 +29,11 @@ class PostList extends Component {
           <Link className="Category-links" to={`/${this.props.category}/${post.id}`} key={post.id}>
             <div className="Post">
               <div className="Button-to-right">
+                <button
+                    className='Button-edit'
+                    onClick={this.openPostModal}>
+                      Edit
+                </button>
                 <button className="Button-delete" onClick={() =>
                 this.props.deletePost({id:post.id, voteScore:post.deleted})}>x</button>
               </div>

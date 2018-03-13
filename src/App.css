@@ -44,6 +44,9 @@
 .Button-delete {
   width: 30px;
 }
+.Button-edit {
+  width: 40px;
+}
 .Post-title {
   font-size: large;
   padding: 10px 0;
