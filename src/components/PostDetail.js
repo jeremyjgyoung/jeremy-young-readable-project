@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { deletePost, incrementVote, decrementVote,
-  addComment, deleteComment, incrementCommentVote, decrementCommentVote } from '../actions'
+  addComment, deleteComment, editPost, incrementCommentVote, decrementCommentVote } from '../actions'
 import sortBy from 'sort-by'
 import Modal from 'react-modal'
 
@@ -13,6 +13,7 @@ class PostDetail extends Component {
     typedPost: '',
     category: '',
     postModalIsOpen: false,
+    editPostModalIsOpen: false,
   }
   handleChangeAuthor = (event) => {
     this.setState({author: event.target.value })
@@ -36,6 +37,16 @@ class PostDetail extends Component {
   closePostModal = () => {
     this.setState({postModalIsOpen: false})
   }
+  openEditPostModal = () => {
+    this.setState({editPostModalIsOpen: true})
+  }
+  closeEditPostModal = () => {
+    this.setState({editPostModalIsOpen: false})
+  }
+  onEditPost = () => {
+    this.setState({postModalIsOpen: false})
+    this.props.addComment({parentId: this.props.post_id, author:this.state.author, title:this.state.title, body:this.state.typedPost })
+  }
   onPost = () => {
     this.setState({postModalIsOpen: false})
     this.props.addComment({parentId: this.props.post_id, author:this.state.author, title:this.state.title, body:this.state.typedPost })
@@ -48,6 +59,11 @@ class PostDetail extends Component {
           <Link className="Category-links" to={`/${this.props.category}/${post.id}`} key={post.id}>
             <div className="Post">
               <div className="Button-to-right">
+                <button
+                    className='Button-edit'
+                    onClick={this.openEditPostModal}>
+                      Edit
+                </button>
                 <button className="Button-delete" onClick={() =>
                 this.props.deletePost({id:post.id, voteScore:post.deleted})}>x</button>
               </div>
@@ -116,6 +132,45 @@ class PostDetail extends Component {
               </div>
           </form>
         </Modal>
+        <Modal
+          className='modal'
+          overlayClassName='overlay'
+          isOpen={this.state.editPostModalIsOpen}
+          style={customStyles}
+          contentLabel='Post Modal'
+        >
+          <button onClick={this.closeEditPostModal}>close</button>
+          <form onSubmit={this.handleSubmit} className="Form">
+              <input type="text" className="Input-name"
+                placeholder="Your Name"
+                value={this.state.author}
+                onChange={this.handleChangeAuthor}
+               />
+               <input type="text" className="Input-title"
+                 placeholder="Title"
+                 value={this.state.title}
+                 onChange={this.handleChangeTitle}
+                />
+              <textarea className="Input-post"
+                placeholder="Your Post"
+                value={this.state.typedPost}
+                onChange={this.handleChangePost}
+               />
+               <div className="Post-cat-post">
+                 <select className="Select-category"
+                   value={this.state.category}
+                   onChange={this.handleChangeCategory}>
+                    <option value="">Category</option>
+                    <option value="react">React</option>
+                    <option value="redux">Redux</option>
+                    <option value="udacity">Udacity</option>
+                 </select>
+                 <button className="Post-button" onClick={this.onPost}>
+                   REPOST
+                 </button>
+              </div>
+          </form>
+        </Modal>
       </div>
     )
   }
@@ -155,6 +210,7 @@ function mapDispatchToProps(dispatch) {
     decrementVote: (data) => dispatch(decrementVote(data)),
     addComment: (data) => dispatch(addComment(data)),
     deleteComment:  (data) => dispatch(deleteComment(data)),
+    editPost: (data) => dispatch(editPost(data)),
     incrementCommentVote: (data) => dispatch(incrementCommentVote(data)),
     decrementCommentVote: (data) => dispatch(decrementCommentVote(data))
   }
