@@ -26,6 +26,7 @@ class PostDetail extends Component {
   handleChangeCategory = (event) => {
     this.setState({category: event.target.value })
   }
+  // handleSubmit may not be needed
   handleSubmit = (event) => {
     event.preventDefault()
   }

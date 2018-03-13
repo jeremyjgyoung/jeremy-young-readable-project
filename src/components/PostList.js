@@ -34,6 +34,7 @@ class PostList extends Component {
               </div>
               <h1 className="Post-title">{post.title}</h1>
               <h2 className="Post-author">{post.author}</h2>
+              <h2 className="Post-author">{post.category}</h2>
               <div className="Div-score">
                 <p className="Post-score"><b>Score:</b> {post.voteScore}</p>
                 <button className="Button-minus" onClick={() =>
