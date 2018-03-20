@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { deletePost, incrementVote, decrementVote,
-  addComment, deleteComment, editPost, incrementCommentVote, decrementCommentVote } from '../actions'
+  addComment, deleteComment, editPost, upvoteComment, decrementCommentVote } from '../actions'
 import sortBy from 'sort-by'
 import Modal from 'react-modal'
 
@@ -101,7 +101,7 @@ class PostDetail extends Component {
                 <button className="Button-minus" onClick={() =>
                   this.props.decrementCommentVote({id:comment.id, voteScore:comment.voteScore})}>-</button>
                 <button className="Button-plus" onClick={() =>
-                  this.props.incrementCommentVote({id:comment.id, voteScore:comment.voteScore})}>+</button>
+                  this.props.upvoteComment({id:comment.id, voteScore:comment.voteScore})}>+</button>
               </div>
             </div>
           ))}
@@ -211,7 +211,7 @@ function mapDispatchToProps(dispatch) {
     addComment: (data) => dispatch(addComment(data)),
     deleteComment:  (data) => dispatch(deleteComment(data)),
     editPost: (data) => dispatch(editPost(data)),
-    incrementCommentVote: (data) => dispatch(incrementCommentVote(data)),
+    upvoteComment: (data) => dispatch(upvoteComment(data)),
     decrementCommentVote: (data) => dispatch(decrementCommentVote(data))
   }
 }
